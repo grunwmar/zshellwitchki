@@ -1,2 +1,25 @@
 #!/bin/zsh
-print "Hello world"
+
+# source: https://www.asciiart.eu/animals/reptiles/turtles
+TURTLE=$(cat <<-END
+
+
+    ZSHELL-WITCH-KI welcomes you!
+
+      _____     ____         _____     ____         _____     ____   
+     /      \  |  o |       /      \  |  o |       /      \  |  o |   
+    |        |/ ___\|      |        |/ ___\|      |        |/ ___\|   
+    |_________/            |_________/            |_________/         
+     |_|_\ |_|_\            |_|_\ |_|_\            |_|_\ |_|_\         
+  WwwWWWwWW,wwWWWwwW,,WWwWWWWWWWWwW.wwWWWWWW.WwWwwWWWWw,WwWww..WWWwwW                
+
+
+
+END
+)
+
+
+echo -e "\033[32;1m$TURTLE\033[0m\n"
+if isopton show-help-cmd; then
+   echo -e "\n  Press "`clr '<ESC>-h' 1`" for to view help page.\n\n"
+fi

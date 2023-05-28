@@ -31,10 +31,6 @@ if isopton show-welcome; then
    source $ZSH_DIR/welcome
 fi
 
-if isopton show-help-cmd; then
-   echo -e "\n\tPress "`clr '<ESC>-h' 1`" for to view help page.\n"
-fi
-
 # ================================================================================================ #
 # basic autocomplete settings
 autoload -U compinit
