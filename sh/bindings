@@ -2,7 +2,7 @@
 
 function _print_help_bind () {
    help=$(cat $ZSH_DIR/help)
-   echo "\n${help}\n"  | more -c
+   echo "\n${help}\n"  | more -c -e -p -d
 }
 zle -N _print_help_bind
 bindkey '\eh' '_print_help_bind'
