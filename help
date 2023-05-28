@@ -1,0 +1,66 @@
+
+ \033[1;4mKEY BINDINGS:\033[0m
+
+  \033[1m <ESC>-h \033[0m   help
+  \033[1m <ESC>-v \033[0m   restart z-shell
+  \033[1m <ESC>-c \033[0m   clear terminal
+  \033[1m <ESC>-m \033[0m   edit note lines in editor
+
+
+ \033[1;4mBUILD-IN COMMANDS:\033[0m
+                              
+ \033[1;36m histch \033[0m           [string]   
+  Changes history session
+  
+ \033[1;36m addnt \033[0m            [string]   
+  Adds new line to notepad
+  
+ \033[1;36m ednt \033[0m             [string]   
+  Opens notepad for editation (same as <ESC>-m)
+  
+ \033[1;36m edwelcome \033[0m    
+  Opens welcome script for editation
+  
+ \033[1;36m rs \033[0m    
+  Restarts shell (same as <ESC>-r)
+  
+ \033[1;36m zshrc \033[0m    
+  Opens zshrc file for editation
+  
+      
+ \033[1;4mOPTIONAL VALUES:\033[0m
+\033[0m
+ These can be easily changed by \033[1mczv\033[0m command
+   
+   set option   \033[1mzos <option> <value>\033[0m
+                                                
+   get option   \033[1mzog <option>\033[0m
+
+ \033[1mPredefined czv options and its value types:\033[0m
+
+ \033[1;32m auto-ls \033[0m           [on/off]   
+  Manages automatic export of directory content
+  
+ \033[1;32m simple-prompt \033[0m     [on/off]   
+  Sets simpler form of prompt (if defined)
+  
+ \033[1;32m show-note \033[0m         [on/off]   
+  Enables / disables note under prompt
+  
+ \033[1;32m show-note-lines \033[0m   [number]   
+  Sets number of viewed lines
+  
+ \033[1;32m show-help-command \033[0m [on/off]   
+  Enables / disables message about help command on the terminal start
+  
+ \033[1;32m show-welcome \033[0m      [on/off]   
+  Enables / disables welcome screen
+  
+ \033[1;32m conn-device \033[0m       [string]   
+  Sets name of network device which IP address have to be
+  mapped to $PVAR[conn_ip] variable for prompt customizing.
+  
+ \033[1;32m prompt-theme \033[0m      [string]   
+  Sets name of prompt theme
+  
+

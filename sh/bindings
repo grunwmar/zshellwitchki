@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+function _print_help_bind () {
+   help=$(cat $ZSH_DIR/help)
+   echo "\n${help}\n"  | more -c
+}
+zle -N _print_help_bind
+bindkey '\eh' '_print_help_bind'
+
+function _clear_bind () { clear }
+bindkey -s '\ec' '_clear_bind ^M'
+
+function _rs_bind () { rs }
+bindkey -s '\er' '_rs_bind ^M'
+
+zle -N ednt
+bindkey -s '\em' 'ednt^M'

@@ -1,0 +1,22 @@
+#!/bin/zsh
+
+# change history mode
+function histch () {
+   zopt -w histmode $1
+   rs
+}
+
+# add note to notepad
+function addnt () {
+   print "$@" >> $NOTEFILE
+}
+
+# edit notepad (<ESC>-n)
+function ednt () {
+   $EDITOR $NOTEFILE
+}
+
+# edit welcome script 
+function edwelcome () {
+   $EDITOR $ZSH_DIR/welcome
+}

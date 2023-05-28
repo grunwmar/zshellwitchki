@@ -1,0 +1,44 @@
+#!/bin/zsh
+
+function _zvar () {
+   declare -A ZSH_SRC
+   ZSH_SRC=(
+      [opt]="$ZSH_OPT/opt_$3"
+      [val]="$ZSH_OPT/val_$3"
+   )
+
+	file=$ZSH_SRC[$1]
+
+	case $2 in
+		"get"|"-r") 
+      if [[ -f $file ]]; then
+         cat $file 
+      else
+         echo ""
+      fi
+      ;;
+		"set"|"-w") echo "$4" > $file ;;
+	esac
+}
+
+
+# Write/read option value
+function zopt () {
+	_zvar opt "$1" "$2" "$3"
+}
+
+
+# Write/read option value
+function zval () {
+	_zvar val "$1" "$2" "$3"
+}
+
+
+# check if value of argument is ON or OFF
+function isopton () {
+   if [[ $(zopt -r $1) == "on" ]]; then
+      return 0
+   else
+      return 1
+   fi
+}

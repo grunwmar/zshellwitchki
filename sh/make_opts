@@ -1,0 +1,25 @@
+#!/bin/zsh
+
+function make_opts () {
+
+    declare -A opt_files
+    opt_files=( 
+        [auto-ls]=on 
+        [show-help-cmd]=on 
+        [show-note]=on 
+        [show-welcome]=on 
+        [simple-prompt]=off 
+        [histmode]=user 
+        [show-note-lines]=2 
+        [prompt-theme]=common
+        [conn-device]=wlo1
+        )
+
+    for key val in "${(@kv)opt_files}"; do
+        file=$ZSH_DIR/opt/"opt_$key"
+        if ! [[ -f "$file" ]]; then
+            print "$val" > "$file"
+        fi
+    done
+
+}

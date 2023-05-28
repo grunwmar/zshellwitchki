@@ -1,0 +1,71 @@
+#!/bin/zsh
+
+function precmd () {
+
+   # prevents new line before first prompt line
+   if [[ "$ISFIRSTCMD" == 1 ]]; then
+      export ISFIRSTCMD=0
+      export FNL=$''
+   else
+      export FNL=$'\n'
+   fi
+
+   ps_time="$(date +'%T')"
+   ps_wdir="$(basename $PWD)"
+   ps_odir="$(basename $OLDPWD)"
+   ps_conn_ip="$(ifdata -pa $CONNDEVICE)"
+
+   # load note to ps_note variable
+   if [ -f $NOTEFILE ]; then
+      _show_note=$(zopt -r 'show-note')
+      _show_note_lines=$(zopt -r 'show-note-lines')
+      if isopton show-note; then
+         note="$(tail -n $_show_note_lines $NOTEFILE)"
+         if [ -n "$note" ]; then
+            ps_note="$NL$note"
+         else
+            ps_note=""
+         fi
+      else
+         ps_note=""
+      fi
+   else
+      ps_note=""
+   fi
+
+   # auto ls
+   ps_ls=""
+   _autols="$(zopt -r auto-ls)"
+   if [[ $_autols == "on" ]]; then
+      _ls=
+      ps_ls="$NL$(ls -xh)"
+   fi
+
+   declare -A PVAR
+
+   PVAR=(
+      [time]="$ps_time"
+      [histmode]="$HISTMODE"
+      [conn_ip]="$ps_conn_ip"
+      [pwd]="$ps_wdir"
+      [ls]="$ps_ls"
+      [note]="$ps_note"
+      [nl]="$NL"
+      [firstnl]="$FNL"
+   )
+
+   export PVAR
+
+   THEME_PATH=$ZSH_DIR/themes/$(zopt -r prompt-theme).theme.zsh
+
+   if [ -f $THEME_PATH ]; then
+      source $THEME_PATH
+      if isopton simple-prompt; then
+         export PROMPT="$SIMPLE_PROMPT"
+      else
+         export PROMPT
+      fi
+   else
+      export PROMPT="[%c]%# "
+   fi
+}

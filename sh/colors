@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+# https://stackoverflow.com/questions/1527049/how-can-i-join-elements-of-a-bash-array-into-a-delimited-string?page=1&tab=scoredesc
+function join_by { local IFS="$1"; shift; echo "$*"; }
+
+# colorize text
+function clr () {
+
+      if [[ "$1" == "-r" ]]; then
+         concat=$(join_by ';' "${argv[@]:3:4}")
+         echo -e "%{\033[${concat}m%}$2%{\033[0m%}"
+      else
+         concat=$(join_by ';' "${argv[@]:2:4}")
+         echo -e "\033[${concat}m$1\033[0m"
+      fi
+}
