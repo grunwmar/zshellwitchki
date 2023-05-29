@@ -8,6 +8,10 @@
   \033[1m <ESC>-i \033[0m   opens system info in tmux panes
   \033[1m <ESC>-t \033[0m   opens tmux tmux session
   \033[1m <ESC>-x \033[0m   closes tmux session
+  \033[1m <ESC>-s \033[0m   switch prompt to simpler form and back
+  \033[1m <CTRL>-z \033[0m  directory back
+  \033[1m <CTRL>-h \033[0m  home directory
+
 
 
  \033[1;4mBUILD-IN COMMANDS:\033[0m
