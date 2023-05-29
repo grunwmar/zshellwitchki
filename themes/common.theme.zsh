@@ -11,7 +11,7 @@ PROMPT+="$(clr -r "$PVAR[note]" 3 32)"
 PROMPT+="$(clr -r "$PVAR[ls]"   2 36)"
 PROMPT+="$PVAR[nl]🐢`clr -r %# 1 32`> "
 
-SIMPLE_PROMPT="`clr -r %n 32 1 `[`clr -r $PVAR[histmode] 36 1 3 `] `clr -r %c 32 1`%# "
+SIMPLE_PROMPT="[`clr -r $PVAR[histmode] 36 3 `] `clr -r %c 32`%# "
 
 export PROMPT
 export SIMPLE_PROMPT

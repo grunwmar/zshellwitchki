@@ -1,9 +1,12 @@
 #!/bin/zsh
 
+SIMPLE_PROMPT_SWITCH=on
+
 function print_help () {
    help=$(cat $ZSH_DIR/help)
    echo "\n${help}\n"  | more -c -e -p -d
 }
+
 zle -N print_help
 bindkey -s '\eh' 'print_help^M'
 
@@ -14,7 +17,7 @@ function _rs_bind () { rs }
 bindkey -s '\er' '_rs_bind ^M'
 
 zle -N ednt
-bindkey -s '\em' 'ednt^M'
+bindkey -s '\en' 'ednt^M'
 
 function exec_tmux () {
    tmux
@@ -31,10 +34,28 @@ function texit () {
 bindkey -s '\ex' 'texit^M'
 
 function tinfo () {
-  old_histmode=$(zog histmode) 
+  old_histmode=$(zog histmode)
+  old_prompt_state=$(zog simple-prompt on)
+
   zos histmode tmux-info
+  zos simple-prompt on
   tmux new-session -s sys_info "tmux source-file $ZSH_DIR/etc/tmux.conf"
 
+  zos simple-prompt $old_prompt_state
   histch $old_histmode
 }
 bindkey -s '\ei' 'tinfo^M'
+
+function pr_switch () {
+   zos simple-prompt $SIMPLE_PROMPT_SWITCH
+   if [[ "$SIMPLE_PROMPT_SWITCH" == on ]]; then
+      export SIMPLE_PROMPT_SWITCH=off 
+   else
+      export SIMPLE_PROMPT_SWITCH=on
+   fi
+   clear
+}
+bindkey -s '\es' "pr_switch^M"
+
+bindkey -s '^z' 'cd -^M'
+bindkey -s '^h' 'cd ~^M'

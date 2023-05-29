@@ -68,5 +68,5 @@ function precmd () {
    else
       export PROMPT="[%c]%# "
    fi
-   echo -e "\033[0m"
+   echo -e -n "\033[0m"
 }
