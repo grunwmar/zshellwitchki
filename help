@@ -5,6 +5,9 @@
   \033[1m <ESC>-v \033[0m   restart z-shell
   \033[1m <ESC>-c \033[0m   clear terminal
   \033[1m <ESC>-m \033[0m   edit note lines in editor
+  \033[1m <ESC>-i \033[0m   opens system info in tmux panes
+  \033[1m <ESC>-t \033[0m   opens tmux tmux session
+  \033[1m <ESC>-x \033[0m   closes tmux session
 
 
  \033[1;4mBUILD-IN COMMANDS:\033[0m

@@ -15,3 +15,26 @@ bindkey -s '\er' '_rs_bind ^M'
 
 zle -N ednt
 bindkey -s '\em' 'ednt^M'
+
+function exec_tmux () {
+   tmux
+}
+zle -N exec_tmux
+bindkey -s '\et' 'exec_tmux^M'
+
+function texit () {
+   if [[ -n $TMUX ]]; then
+      tmux kill-session -t sys_info
+      exit
+   fi
+}
+bindkey -s '\ex' 'texit^M'
+
+function tinfo () {
+  old_histmode=$(zog histmode) 
+  zos histmode tmux-info
+  tmux new-session -s sys_info "tmux source-file $ZSH_DIR/etc/tmux.conf"
+
+  histch $old_histmode
+}
+bindkey -s '\ei' 'tinfo^M'

@@ -1,6 +1,0 @@
-print_help
-print_help
-nano history
-nano history/zsh_history_user
-git add .
-exit
